@@ -27,8 +27,6 @@ I’m actively seeking **Software Engineering / AI / Backend internships** where
 
 ## 🧠 Tech Stack
 
-> Soft, faded purple badges to match my portfolio’s dark aesthetic.
-
 ### 🔤 Languages
 <p>
   <img src="https://img.shields.io/badge/Python-5B21B6?style=for-the-badge&logo=python&logoColor=FFFFFF" />
