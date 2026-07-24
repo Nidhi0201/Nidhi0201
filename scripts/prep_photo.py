@@ -29,6 +29,22 @@ def remove_background(rgb: np.ndarray) -> np.ndarray:
     return np.array(cut.convert("RGBA"))
 
 
+def crop_to_subject(rgba: np.ndarray, margin: float = 0.06) -> np.ndarray:
+    """Crop to the alpha bounding box (+margin) so the subject fills the frame."""
+    alpha = rgba[:, :, 3]
+    ys, xs = np.where(alpha > 24)
+    if ys.size == 0:
+        return rgba
+    y0, y1 = ys.min(), ys.max()
+    x0, x1 = xs.min(), xs.max()
+    h, w = rgba.shape[:2]
+    my = int((y1 - y0) * margin)
+    mx = int((x1 - x0) * margin)
+    y0 = max(0, y0 - my); y1 = min(h - 1, y1 + my)
+    x0 = max(0, x0 - mx); x1 = min(w - 1, x1 + mx)
+    return rgba[y0:y1 + 1, x0:x1 + 1]
+
+
 def composite_on_white(rgba: np.ndarray) -> np.ndarray:
     """Alpha-composite an RGBA image over a pure white background -> RGB."""
     rgb = rgba[:, :, :3].astype(np.float32)
@@ -60,6 +76,9 @@ def main() -> None:
 
     print("removing background...")
     rgba = remove_background(rgb)
+
+    print("cropping to subject...")
+    rgba = crop_to_subject(rgba)
 
     print("compositing on white...")
     rgb_white = composite_on_white(rgba)

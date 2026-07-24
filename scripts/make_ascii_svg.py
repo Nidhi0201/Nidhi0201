@@ -37,14 +37,31 @@ OUT = Path(__file__).resolve().parent.parent / "avi-ascii.svg"
 
 
 def load_values_from_image():
-    """Return ROWS x COLS grayscale values (0..255) from the prepped photo."""
+    """Return ROWS x COLS grayscale values (0..255) from the prepped photo.
+
+    Fits the subject into the grid preserving aspect ratio (accounting for the
+    non-square character cell), then centers it on a white field so padding maps
+    to spaces rather than stretching the face.
+    """
     from PIL import Image
 
     img = Image.open(PREPPED).convert("L")
-    # Compensate for character cells being ~2x taller than wide.
-    img = img.resize((COLS, ROWS), Image.LANCZOS)
-    px = img.load()
-    return [[px[c, r] for c in range(COLS)] for r in range(ROWS)]
+    w, h = img.size
+    box_w, box_h = COLS * CW, ROWS * CH
+    scale = min(box_w / w, box_h / h)
+    cols_used = max(1, min(COLS, round(w * scale / CW)))
+    rows_used = max(1, min(ROWS, round(h * scale / CH)))
+
+    resized = img.resize((cols_used, rows_used), Image.LANCZOS)
+    px = resized.load()
+
+    col_off = (COLS - cols_used) // 2
+    row_off = (ROWS - rows_used) // 2
+    grid = [[255] * COLS for _ in range(ROWS)]
+    for r in range(rows_used):
+        for c in range(cols_used):
+            grid[row_off + r][col_off + c] = px[c, r]
+    return grid
 
 
 def synth_placeholder():
