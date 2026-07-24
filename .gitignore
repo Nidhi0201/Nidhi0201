@@ -3,4 +3,5 @@ __pycache__/
 *.pyc
 .netlify
 scripts/source-prepped.png
+scripts/source-mask.png
 source-photo.*

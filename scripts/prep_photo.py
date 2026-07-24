@@ -80,6 +80,12 @@ def main() -> None:
     print("cropping to subject...")
     rgba = crop_to_subject(rgba)
 
+    # Save the subject mask (alpha) so the ASCII step can render a clean,
+    # featureless silhouette instead of a shaded face.
+    mask_path = out.with_name("source-mask.png")
+    cv2.imwrite(str(mask_path), rgba[:, :, 3])
+    print(f"wrote {mask_path}")
+
     print("compositing on white...")
     rgb_white = composite_on_white(rgba)
 

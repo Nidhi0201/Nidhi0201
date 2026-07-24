@@ -33,7 +33,13 @@ STAGGER = 0.055       # delay between consecutive rows (s)
 ROW_DUR = 0.45        # wipe duration per row (s)
 
 PREPPED = Path(__file__).with_name("source-prepped.png")
+MASK = Path(__file__).with_name("source-mask.png")
 OUT = Path(__file__).resolve().parent.parent / "avi-ascii.svg"
+
+# Silhouette fill: subject renders as one uniform density (no facial features);
+# anti-aliased edges ride the lighter end of the ramp for a clean outline.
+SIL_DARK = 40      # interior value -> dense glyph
+SIL_EDGE = 210     # faint edge value -> sparse glyph
 
 
 def load_values_from_image():
@@ -68,6 +74,39 @@ def load_values_from_image():
     for r in range(rows_used):
         for c in range(cols_used):
             grid[row_off + r][col_off + c] = px[c, r]
+    return grid
+
+
+def load_values_from_mask():
+    """Render a featureless silhouette from the subject mask.
+
+    Subject area maps to a single uniform density; anti-aliased edges map to
+    lighter glyphs so the outline stays clean. No facial features at all.
+    """
+    from PIL import Image, ImageFilter
+
+    mask = Image.open(MASK).convert("L")
+    w, h = mask.size
+    box_w, box_h = COLS * CW, ROWS * CH
+    scale = min(box_w / w, box_h / h)
+    cols_used = max(1, min(COLS, round(w * scale / CW)))
+    rows_used = max(1, min(ROWS, round(h * scale / CH)))
+
+    mask = mask.filter(ImageFilter.GaussianBlur(radius=max(1.0, (w / cols_used) * 0.5)))
+    resized = mask.resize((cols_used, rows_used), Image.LANCZOS)
+    px = resized.load()
+
+    col_off = (COLS - cols_used) // 2
+    row_off = (ROWS - rows_used) // 2
+    grid = [[255] * COLS for _ in range(ROWS)]
+    for r in range(rows_used):
+        for c in range(cols_used):
+            a = px[c, r] / 255.0          # 1 = solid subject, 0 = background
+            if a <= 0.12:
+                continue                   # background -> space
+            # Uniform interior; only the soft edge fades toward sparse glyphs.
+            value = SIL_EDGE - a * (SIL_EDGE - SIL_DARK)
+            grid[row_off + r][col_off + c] = int(max(0, min(255, value)))
     return grid
 
 
@@ -174,7 +213,10 @@ def build_svg(grid) -> str:
 
 
 def main() -> None:
-    if PREPPED.exists():
+    if MASK.exists():
+        print(f"using subject mask: {MASK.name} (featureless silhouette)")
+        grid = load_values_from_mask()
+    elif PREPPED.exists():
         print(f"using prepped photo: {PREPPED.name}")
         grid = load_values_from_image()
     else:
