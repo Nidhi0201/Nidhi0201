@@ -43,7 +43,7 @@ def load_values_from_image():
     non-square character cell), then centers it on a white field so padding maps
     to spaces rather than stretching the face.
     """
-    from PIL import Image
+    from PIL import Image, ImageFilter
 
     img = Image.open(PREPPED).convert("L")
     w, h = img.size
@@ -52,7 +52,14 @@ def load_values_from_image():
     cols_used = max(1, min(COLS, round(w * scale / CW)))
     rows_used = max(1, min(ROWS, round(h * scale / CH)))
 
+    # Blur before downsampling so fine facial features (eyes, teeth, mouth)
+    # dissolve into smooth tone -- a clean likeness, not an uncanny expression.
+    blur_radius = max(1.0, (w / cols_used) * 0.9)
+    img = img.filter(ImageFilter.GaussianBlur(radius=blur_radius))
+
     resized = img.resize((cols_used, rows_used), Image.LANCZOS)
+    # A second gentle blur on the small grid smooths cell-to-cell speckle.
+    resized = resized.filter(ImageFilter.GaussianBlur(radius=0.6))
     px = resized.load()
 
     col_off = (COLS - cols_used) // 2
