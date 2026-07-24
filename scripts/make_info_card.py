@@ -20,12 +20,14 @@ from pathlib import Path
 USER = "nidhi"
 HOST = "github"
 CONTENT = [
-    ("Now",        "Software Engineer"),
-    ("Prev",       "CS Student & Intern"),
-    ("Stack",      "Python \u00b7 JavaScript \u00b7 React \u00b7 Node"),
-    ("Focus",      "Web apps, automation, open source"),
-    ("Learning",   "Systems design \u00b7 Cloud"),
-    ("Highlights", "Ships small tools that people use"),
+    ("Name",       "Nidhi Prajapati"),
+    ("Location",   "Hayward, CA"),
+    ("Now",        "Full-stack + AI/ML engineer"),
+    ("Stack",      "Python \u00b7 FastAPI \u00b7 React \u00b7 Next.js"),
+    ("Also",       "LangGraph \u00b7 Java \u00b7 ASP.NET \u00b7 scikit-learn"),
+    ("Building",   "AI CRM \u00b7 Resume Reviewer Agent \u00b7 devflow-ai"),
+    ("Community",  "HackHayward organizer"),
+    ("Motto",      "Always learning, always building"),
 ]
 # ---------------------------------------------------------------------------
 
