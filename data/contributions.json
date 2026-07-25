@@ -1,17 +1,17 @@
 {
   "username": "Nidhi0201",
-  "generated_at": "2026-07-24T21:45:55.823510+00:00",
+  "generated_at": "2026-07-25T08:23:24.595743+00:00",
   "range": {
     "start": "2025-07-20",
-    "end": "2026-07-24"
+    "end": "2026-07-25"
   },
   "stats": {
-    "total": 125,
-    "current_streak": 1,
+    "total": 131,
+    "current_streak": 2,
     "longest_streak": 3,
     "best_day": {
       "date": "2026-07-24",
-      "count": 23
+      "count": 28
     },
     "monthly": {
       "2025-07": 0,
@@ -26,9 +26,9 @@
       "2026-04": 9,
       "2026-05": 9,
       "2026-06": 13,
-      "2026-07": 23
+      "2026-07": 29
     },
-    "top_threshold": 23
+    "top_threshold": 28
   },
   "days": [
     {
@@ -586,7 +586,7 @@
     {
       "date": "2025-10-20",
       "count": 21,
-      "level": 4,
+      "level": 3,
       "weekday": 0
     },
     {
@@ -838,7 +838,7 @@
     {
       "date": "2025-12-01",
       "count": 7,
-      "level": 2,
+      "level": 1,
       "weekday": 0
     },
     {
@@ -2068,7 +2068,7 @@
     {
       "date": "2026-06-24",
       "count": 6,
-      "level": 2,
+      "level": 1,
       "weekday": 2
     },
     {
@@ -2247,9 +2247,15 @@
     },
     {
       "date": "2026-07-24",
-      "count": 23,
+      "count": 28,
       "level": 4,
       "weekday": 4
+    },
+    {
+      "date": "2026-07-25",
+      "count": 1,
+      "level": 1,
+      "weekday": 5
     }
   ]
 }
