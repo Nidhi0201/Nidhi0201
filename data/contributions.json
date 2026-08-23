@@ -1,14 +1,14 @@
 {
   "username": "Nidhi0201",
-  "generated_at": "2026-08-22T06:58:05.736307+00:00",
+  "generated_at": "2026-08-23T06:59:52.625794+00:00",
   "range": {
-    "start": "2025-08-17",
-    "end": "2026-08-22"
+    "start": "2025-08-24",
+    "end": "2026-08-23"
   },
   "stats": {
-    "total": 169,
-    "current_streak": 29,
-    "longest_streak": 29,
+    "total": 170,
+    "current_streak": 30,
+    "longest_streak": 30,
     "best_day": {
       "date": "2026-07-24",
       "count": 28
@@ -26,53 +26,11 @@
       "2026-05": 9,
       "2026-06": 13,
       "2026-07": 36,
-      "2026-08": 31
+      "2026-08": 32
     },
     "top_threshold": 21
   },
   "days": [
-    {
-      "date": "2025-08-17",
-      "count": 0,
-      "level": 0,
-      "weekday": 6
-    },
-    {
-      "date": "2025-08-18",
-      "count": 0,
-      "level": 0,
-      "weekday": 0
-    },
-    {
-      "date": "2025-08-19",
-      "count": 0,
-      "level": 0,
-      "weekday": 1
-    },
-    {
-      "date": "2025-08-20",
-      "count": 0,
-      "level": 0,
-      "weekday": 2
-    },
-    {
-      "date": "2025-08-21",
-      "count": 0,
-      "level": 0,
-      "weekday": 3
-    },
-    {
-      "date": "2025-08-22",
-      "count": 0,
-      "level": 0,
-      "weekday": 4
-    },
-    {
-      "date": "2025-08-23",
-      "count": 0,
-      "level": 0,
-      "weekday": 5
-    },
     {
       "date": "2025-08-24",
       "count": 0,
@@ -2253,9 +2211,15 @@
     },
     {
       "date": "2026-08-22",
+      "count": 1,
+      "level": 1,
+      "weekday": 5
+    },
+    {
+      "date": "2026-08-23",
       "count": 0,
       "level": 0,
-      "weekday": 5
+      "weekday": 6
     }
   ]
 }
