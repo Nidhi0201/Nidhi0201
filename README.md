@@ -8,7 +8,7 @@ Focus areas: backend, distributed systems and applied AI.
 ## Featured projects
 
 - [SignalOps](https://github.com/Nidhi0201/SignalOps) — Observability platform: FastAPI log ingestion, Redis Streams, OpenSearch search and alerting, and AI incident summaries. Local single-node OpenSearch benchmark in the README indexed 1M documents at ~19,810 docs/sec with sub-15 ms p95 search.
-- [Multi-Client Banking System](https://github.com/Nidhi0201/Multi-Client-Banking-System) — Team-built Java client-server banking app; I owned the TCP socket layer with a 20-thread ExecutorService pool, alongside a REST API and Next.js web UI.
+- [Multi-Client Banking System](https://github.com/Nidhi0201/Multi-Client-Banking-System) — Team-built Java client-server banking app; I owned the TCP socket layer with a 20-thread ExecutorService pool, and added a REST API and Next.js web UI in my fork.
 - [Autonomous Resume Reviewer Agent](https://github.com/Nidhi0201/Autonomous-Resume-Reviewer-Agent) — FastAPI + LangGraph resume-bullet reviewer with self-critique, job-description matching and a labeled evaluation set; Next.js/TypeScript frontend.
 - [Portfolio](https://github.com/Nidhi0201/Nidhi-Prajapati-Portfolio) — Source for [nidhiprajapati.dev](https://nidhiprajapati.dev/): project walkthroughs and resume.
 
