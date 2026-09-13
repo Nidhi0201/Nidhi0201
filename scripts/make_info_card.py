@@ -22,10 +22,11 @@ HOST = "github"
 CONTENT = [
     ("Name",       "Nidhi Prajapati"),
     ("Location",   "Hayward, CA"),
-    ("Now",        "Full-stack + AI/ML engineer"),
-    ("Stack",      "Python \u00b7 FastAPI \u00b7 React \u00b7 Next.js"),
-    ("Also",       "LangGraph \u00b7 Java \u00b7 ASP.NET \u00b7 scikit-learn"),
-    ("Building",   "AI CRM \u00b7 Resume Reviewer Agent \u00b7 devflow-ai"),
+    ("Role",       "New Grad Software Engineer"),
+    ("Graduating", "December 2026 \u00b7 B.S. CS, CSU East Bay"),
+    ("Focus",      "Backend \u00b7 Distributed systems \u00b7 Applied AI"),
+    ("Languages",  "Java \u00b7 Python \u00b7 JavaScript"),
+    ("Building",   "SignalOps \u00b7 Banking System \u00b7 Resume Reviewer"),
     ("Community",  "HackHayward organizer"),
     ("Motto",      "Always learning, always building"),
 ]
